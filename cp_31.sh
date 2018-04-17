@@ -110,6 +110,7 @@ done
 n=0
 while [[ n -lt ${#changeNames[@]} ]]; do
 
+  let n++
   changeName=${changeNames[n]}
   changeNameInProj=${changeNamesInProj[n]}
   #替换app内用到的图标 和 首页那个图
