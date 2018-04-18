@@ -102,7 +102,7 @@ while [[ m -lt ${#icons[@]} ]]; do
     echo "${launch}"
     let m++
 
-    #替换app内用到的图标 和 首页那个图
+    #替换图标、启动图
     cp "${resource_path}/${appName}/${icon}" "${project_path}/${project_name}/Images.xcassets/AppIcon.appiconset/${icon}"
     cp "${resource_path}/${appName}/${launch}" "${project_path}/${project_name}/Images.xcassets/LaunchImage.launchimage/${launch}"
 done
@@ -110,11 +110,10 @@ done
 n=0
 while [[ n -lt ${#changeNames[@]} ]]; do
 
-  let n++
   changeName=${changeNames[n]}
   changeNameInProj=${changeNamesInProj[n]}
+  let n++
   #替换app内用到的图标 和 首页那个图
-  cp "${resource_path}/${appName}/${changeName}" "${project_path}/${project_name}/${changeNameInProj}"
   cp "${resource_path}/${appName}/${changeName}" "${project_path}/${project_name}/${changeNameInProj}"
 
 done
@@ -128,11 +127,14 @@ group(){
     appIds=${appIds[0]}
   fi
 
-  i=0
-  while [[ i -lt ${#appIds[@]} ]]; do
+  appNames_new=appNames
+  appIds_new=appIds
 
-    appName=${appNames[i]}
-    appId=${appIds[i]}
+  i=0
+  while [[ i -lt ${#appIds_new[@]} ]]; do
+
+    appName=${appNames_new[i]}
+    appId=${appIds_new[i]}
     let i++
 
     echo $appName
